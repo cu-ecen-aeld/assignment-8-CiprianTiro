@@ -44,6 +44,7 @@ Call trace:
  el0t_64_sync+0x18c/0x190
 Code: d2800001 d2800000 d503233f d50323bf (b900003f) 
 ---[ end trace 0000000000000000 ]---
+```
 
 ## 2. Technical Breakdown & Analysis
 
@@ -72,8 +73,6 @@ The stack dump tracks the active kernel function branches in reverse order:
 1. **`el0t_64_sync` -> `do_el0_svc` -> `invoke_syscall`**
 2. **`__arm64_sys_write` -> `ksys_write`**
 3. **`faulty_write`**
-
-```
 
 ## 3. Locating the line in the driver source code
 
