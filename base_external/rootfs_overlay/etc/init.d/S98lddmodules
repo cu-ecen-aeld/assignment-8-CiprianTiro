@@ -1,0 +1,41 @@
+#!/bin/sh
+
+case "$1" in
+  start)
+    echo "Loading LDD modules..."
+    
+    #  Ensure the .ko files are inside /usr/bin so the wrappers can see them
+    #  (Grabs them from the default Buildroot installation path if they aren't already there)
+    cp /lib/modules/$(uname -r)/extra/*.ko /usr/bin/ 2>/dev/null
+
+    # 1. Load scull driver using the utilities installed to /usr/bin
+    cd /usr/bin
+    
+    ./scull_load
+    # 2. Load faulty driver
+    ./module_load faulty
+    
+    # 3. Load hello driver using modprobe (requires running depmod first)
+    modprobe hello
+    ;;
+    
+  stop)
+    echo "Unloading LDD modules..."
+    
+    cd /usr/bin
+    # 1. Unload scull
+    ./scull_unload
+    
+    # 2. Unload faulty
+    ./module_unload faulty
+    
+    # 3. Unload hello
+    rmmod hello
+    ;;
+    
+  *)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+esac
+
+exit 0
