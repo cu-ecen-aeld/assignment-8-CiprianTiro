@@ -1,0 +1,28 @@
+#!/bin/sh
+
+case "$1" in
+  start)
+    echo "Loading AESD CHAR module..."
+
+    # 1. Load aesdchar driver using the utilities installed to /usr/bin
+    cd /usr/bin
+    
+    ./aesdchar_load
+
+    ;;
+    
+  stop)
+    echo "Unloading AESD CHAR module..."
+    
+    cd /usr/bin
+    # 1. Unload aesdchar
+    ./aesdchar_unload
+    
+    ;;
+    
+  *)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+esac
+
+exit 0
