@@ -3,7 +3,7 @@
 # AESD Character Driver
 #
 ##############################################################
-AESD_CHAR_DRIVER_VERSION = 05146560e4515956597d9714e4658f756bb6a95d
+AESD_CHAR_DRIVER_VERSION = 0601eb93ff49204064869ac5e0b69d743f0dcc49
 AESD_CHAR_DRIVER_SITE = git@github.com:cu-ecen-aeld/assignments-3-and-later-CiprianTiro.git
 AESD_CHAR_DRIVER_SITE_METHOD = git
 AESD_CHAR_DRIVER_MODULE_SUBDIRS = aesd-char-driver
